@@ -2,3 +2,11 @@
     background-color: tomato;
     width: 300px;
 }
+
+.faction-card:hover {
+    background-color: aliceblue;
+}
+
+.faction-card.selected {
+    background-color: yellowgreen;
+}

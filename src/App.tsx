@@ -5,6 +5,7 @@ import { IFaction } from './types/IFaction';
 
 const App: FC = () => {
     const [factionList, setFactionList] = useState<IFaction[]>([]);
+    const [selectedList, setSelectedList] = useState<IFaction[]>([]);
 
     const marquise = { factionName: 'Marquise', presencePoint: 10 };
     const duchy = { factionName: 'Duchy', presencePoint: 8 };
@@ -20,15 +21,29 @@ const App: FC = () => {
         createFactionList();
     }, []);
 
+    const handleFactionClick = (factionToCheck: IFaction): void => {
+        const isSelected = selectedList.includes(factionToCheck);
+        // Si c'est sélectionné on déselectionne
+        if (isSelected) {
+            setSelectedList(selectedList.filter((faction) => faction.factionName != factionToCheck.factionName));
+        } else {
+            setSelectedList([...selectedList, factionToCheck]);
+        }
+        console.log(selectedList);
+    };
+
     return (
         <div className="App">
             <h1>Root faction combination</h1>
             <div className="todoList">
-                {factionList.map((task: IFaction, key: number) => {
+                {factionList.map((faction: IFaction, key: number) => {
+                    const isSelected = selectedList.includes(faction);
                     return (
                         <FactionComponent
                             key={key}
-                            faction={task}
+                            faction={faction}
+                            onFactionClick={handleFactionClick}
+                            selected={isSelected}
                         />
                     );
                 })}
