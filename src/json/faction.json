@@ -1,0 +1,47 @@
+[
+    {
+        "id": 0,
+        "factionName": "Marquise",
+        "presencePoint": 10
+    },
+    {
+        "id": 1,
+        "factionName": "Duchy",
+        "presencePoint": 8
+    },
+    {
+        "id": 2,
+        "factionName": "Eyrie",
+        "presencePoint": 7
+    },
+    {
+        "id": 3,
+        "factionName": "Vaga",
+        "presencePoint": 5
+    },
+    {
+        "id": 4,
+        "factionName": "Riverfolk",
+        "presencePoint": 5
+    },
+    {
+        "id": 5,
+        "factionName": "Alliance",
+        "presencePoint": 3
+    },
+    {
+        "id": 6,
+        "factionName": "Corvid",
+        "presencePoint": 3
+    },
+    {
+        "id": 7,
+        "factionName": "Vaga2",
+        "presencePoint": 2
+    },
+    {
+        "id": 8,
+        "factionName": "Cult",
+        "presencePoint": 2
+    }
+]
