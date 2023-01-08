@@ -3,10 +3,14 @@
     width: 300px;
 }
 
-.faction-card:hover {
+.faction-card:hover:not(.disabled) {
     background-color: aliceblue;
 }
 
 .faction-card.selected {
     background-color: yellowgreen;
+}
+
+.faction-card.disabled {
+    opacity: 0.5;
 }

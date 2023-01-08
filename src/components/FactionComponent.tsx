@@ -6,16 +6,20 @@ interface Props {
     faction: IFaction;
     onFactionClick(faction: IFaction): void;
     selected: boolean;
+    disabled: boolean;
 }
 
-const FactionComponent = ({ faction, onFactionClick, selected }: Props) => {
-    var isSelected = selected ? 'selected' : '';
-    var className = 'faction-card  ' + isSelected;
+const FactionComponent = ({ faction, onFactionClick, selected, disabled }: Props) => {
+    var isSelected = selected ? ' selected' : '';
+    var isDisabled = disabled ? ' disabled' : '';
+    var className = 'faction-card ' + isSelected + isDisabled;
 
     return (
         <div
             className={className}
-            onClick={() => onFactionClick(faction)}
+            onClick={() => {
+                if (!isDisabled) onFactionClick(faction);
+            }}
         >
             <h1>{faction.factionName}</h1>
             <h2>{faction.presencePoint}</h2>
