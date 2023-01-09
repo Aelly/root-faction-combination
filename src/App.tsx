@@ -3,12 +3,18 @@ import './App.css';
 import FactionComponent from './components/FactionComponent';
 import { IFaction } from './types/IFaction';
 import factionList from './json/faction.json';
+import PlayerSelectionComponent from './components/PlayerSelectionComponent';
 
 const App: FC = () => {
-    const CURRENT_PLAY_COUNT_ = 3;
-    const CURRENT_TOTAL_PRESENCE_NEEDED = 17;
-
     const [selectedList, setSelectedList] = useState<IFaction[]>([]);
+    const [numberPlayer, setNumberPlayer] = useState<number>(3);
+
+    const reachNeededDictionnary: Map<number, number> = new Map<number, number>();
+    reachNeededDictionnary.set(2, 17);
+    reachNeededDictionnary.set(3, 18);
+    reachNeededDictionnary.set(4, 21);
+    reachNeededDictionnary.set(5, 25);
+    reachNeededDictionnary.set(6, 28);
 
     const handleFactionClick = (factionToCheck: IFaction): void => {
         const isSelected = selectedList.includes(factionToCheck);
@@ -20,36 +26,44 @@ const App: FC = () => {
         }
     };
 
+    const handleNumberPlayerChange = (newNumberPlayer: number): void => {
+        setNumberPlayer(newNumberPlayer);
+        if (newNumberPlayer < numberPlayer) setSelectedList([]);
+    };
+
+    const reachNeeded = reachNeededDictionnary.get(numberPlayer) || 17;
+
     const currentTotalPresence = selectedList.reduce((accumulator, faction) => {
-        return accumulator + faction.presencePoint;
+        return accumulator + faction.reachValue;
     }, 0);
 
-    const factionNotPickedByPresence = factionList
+    const factionNotPickedByReach = factionList
         .filter((faction) => !selectedList.includes(faction))
-        .sort((a, b) => b.presencePoint - a.presencePoint);
-    const factionNeeded = CURRENT_PLAY_COUNT_ - selectedList.length;
-    const maxPresenceForCurrent =
+        .sort((a, b) => b.reachValue - a.reachValue);
+    const factionNeeded = numberPlayer - selectedList.length;
+    const maxReachForCurrent =
         factionNeeded > 0
-            ? factionNotPickedByPresence.slice(0, factionNeeded - 1).reduce((accumulator, faction) => {
-                  return accumulator + faction.presencePoint;
+            ? factionNotPickedByReach.slice(0, factionNeeded - 1).reduce((accumulator, faction) => {
+                  return accumulator + faction.reachValue;
               }, 0)
             : 0;
-    console.log(maxPresenceForCurrent);
 
     return (
         <div className="App">
             <h1>Root faction combination</h1>
+            <PlayerSelectionComponent
+                numberPlayer={numberPlayer}
+                onNumberPlayerChange={handleNumberPlayerChange}
+            />
             <h2>
-                {currentTotalPresence} / {CURRENT_TOTAL_PRESENCE_NEEDED}
+                {currentTotalPresence} / {reachNeeded}+
             </h2>
             <div className="factionList">
                 {factionList.map((faction: IFaction, key: number) => {
                     const isSelected = selectedList.includes(faction);
-                    // const isDisabled = !isSelected && faction.presencePoint < 17 - currentTotalPresence;
                     const isDisabled =
                         !isSelected &&
-                        (faction.presencePoint + maxPresenceForCurrent <
-                            CURRENT_TOTAL_PRESENCE_NEEDED - currentTotalPresence ||
+                        (faction.reachValue + maxReachForCurrent < reachNeeded - currentTotalPresence ||
                             factionNeeded <= 0);
                     return (
                         <FactionComponent

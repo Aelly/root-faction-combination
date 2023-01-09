@@ -1,3 +1,25 @@
+@font-face {
+    font-family: Quattrocento;
+    src: url(assets/Quattrocento-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --default-text-color: white;
+    --background-color: #7dc2af;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--default-text-color);
+    font-family: Quattrocento;
+}
+
 .factionList {
     display: flex;
     flex-direction: row;

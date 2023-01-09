@@ -22,7 +22,7 @@ const FactionComponent = ({ faction, onFactionClick, selected, disabled }: Props
             }}
         >
             <h1>{faction.factionName}</h1>
-            <h2>{faction.presencePoint}</h2>
+            <h2>{faction.reachValue}</h2>
         </div>
     );
 };
