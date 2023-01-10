@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/root-faction-combination/static/css/main.1429ffc8.css",
-    "main.js": "/root-faction-combination/static/js/main.f6a922f2.js",
+    "main.css": "/root-faction-combination/static/css/main.cd07e88d.css",
+    "main.js": "/root-faction-combination/static/js/main.5bba015b.js",
     "static/js/787.8194d284.chunk.js": "/root-faction-combination/static/js/787.8194d284.chunk.js",
+    "static/media/Quattrocento-Regular.ttf": "/root-faction-combination/static/media/Quattrocento-Regular.3d1b0443d0ee295dc542.ttf",
     "index.html": "/root-faction-combination/index.html",
-    "main.1429ffc8.css.map": "/root-faction-combination/static/css/main.1429ffc8.css.map",
-    "main.f6a922f2.js.map": "/root-faction-combination/static/js/main.f6a922f2.js.map",
+    "main.cd07e88d.css.map": "/root-faction-combination/static/css/main.cd07e88d.css.map",
+    "main.5bba015b.js.map": "/root-faction-combination/static/js/main.5bba015b.js.map",
     "787.8194d284.chunk.js.map": "/root-faction-combination/static/js/787.8194d284.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1429ffc8.css",
-    "static/js/main.f6a922f2.js"
+    "static/css/main.cd07e88d.css",
+    "static/js/main.5bba015b.js"
   ]
 }
