@@ -10,14 +10,29 @@
 }
 
 :root {
-    --default-text-color: white;
-    --background-color: #7dc2af;
+    --default-text-color: #e0e0e0;
+    --background-color: #1a2027;
 }
 
 body {
     background-color: var(--background-color);
     color: var(--default-text-color);
     font-family: Quattrocento;
+    margin: 10px;
+}
+
+button {
+    background-color: #fff;
+    border: none;
+    padding: 0.1em 0.5em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.header {
+    text-align: center;
 }
 
 .factionList {
@@ -25,5 +40,13 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    row-gap: 10px;
+    gap: 20px;
+}
+
+.logo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 20%;
+    z-index: -1;
 }

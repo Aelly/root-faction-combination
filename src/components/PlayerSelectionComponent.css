@@ -1,0 +1,55 @@
+:root {
+    --select-border: #777;
+    --select-arrow: var(--select-border);
+}
+
+.player-selection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    min-width: 5ch;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.1em 0.5em;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+    display: grid;
+    grid-template-areas: 'select';
+    align-items: center;
+}
+
+.select::after {
+    content: '';
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--select-arrow);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    justify-self: end;
+    pointer-events: none;
+}
+
+select,
+.select:after {
+    grid-area: select;
+}

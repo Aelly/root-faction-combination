@@ -12,17 +12,20 @@ const PlayerSelectionComponent = ({ numberPlayer, onNumberPlayerChange }: Props)
     };
 
     return (
-        <div>
-            <select
-                value={numberPlayer}
-                onChange={handleChange}
-            >
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
+        <div className="player-selection">
+            <h2>Number of player :</h2>
+            <div className="select">
+                <select
+                    value={numberPlayer}
+                    onChange={handleChange}
+                >
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
         </div>
     );
 };

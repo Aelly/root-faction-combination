@@ -1,47 +1,65 @@
 [
     {
         "id": 0,
-        "factionName": "Marquise",
-        "reachValue": 10
+        "factionName": "Marquise de Cat",
+        "reachValue": 10,
+        "factionColor": "#E67C20",
+        "icon": "Marquise.png"
     },
     {
         "id": 1,
-        "factionName": "Duchy",
-        "reachValue": 8
+        "factionName": "Underground Duchy",
+        "reachValue": 8,
+        "factionColor": "#EBC2A6",
+        "icon": "Duchy.png"
     },
     {
         "id": 2,
-        "factionName": "Eyrie",
-        "reachValue": 7
+        "factionName": "The Eyrie",
+        "reachValue": 7,
+        "factionColor": "#508DCA",
+        "icon": "Eyrie.png"
     },
     {
         "id": 3,
-        "factionName": "Vaga",
-        "reachValue": 5
+        "factionName": "Vagabond",
+        "reachValue": 5,
+        "factionColor": "#767676",
+        "icon": "Vagabond.png"
     },
     {
         "id": 4,
-        "factionName": "Riverfolk",
-        "reachValue": 5
+        "factionName": "Riverfolk Company",
+        "reachValue": 5,
+        "factionColor": "#5FC2BF",
+        "icon": "Riverfolk.png"
     },
     {
         "id": 5,
-        "factionName": "Alliance",
-        "reachValue": 3
+        "factionName": "Woodland Alliance",
+        "reachValue": 3,
+        "factionColor": "#11A052",
+        "icon": "Alliance.png"
     },
     {
         "id": 6,
-        "factionName": "Corvid",
-        "reachValue": 3
+        "factionName": "Corvid Conspiracy",
+        "reachValue": 3,
+        "factionColor": "#8F5AA5",
+        "icon": "Corvid.png"
     },
     {
         "id": 7,
-        "factionName": "Vaga2",
-        "reachValue": 2
+        "factionName": "2nd Vagabond",
+        "reachValue": 2,
+        "factionColor": "#626161",
+        "icon": "Vagabond.png"
     },
     {
         "id": 8,
-        "factionName": "Cult",
-        "reachValue": 2
+        "factionName": "Lizard Cult",
+        "reachValue": 2,
+        "factionColor": "#F5EE7E",
+        "icon": "Cult.png"
     }
 ]

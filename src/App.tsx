@@ -4,6 +4,7 @@ import FactionComponent from './components/FactionComponent';
 import { IFaction } from './types/IFaction';
 import factionList from './json/faction.json';
 import PlayerSelectionComponent from './components/PlayerSelectionComponent';
+import logo from './assets/logo.png';
 
 const App: FC = () => {
     const [selectedList, setSelectedList] = useState<IFaction[]>([]);
@@ -20,7 +21,18 @@ const App: FC = () => {
         const isSelected = selectedList.includes(factionToCheck);
         // Si c'est sélectionné on déselectionne
         if (isSelected) {
-            setSelectedList(selectedList.filter((faction) => faction.id !== factionToCheck.id));
+            // Si on désélectionné le vagabond 1, on va aussi déselectionner le vagabond 2
+            setSelectedList(
+                selectedList.filter((faction) => {
+                    if (factionToCheck.id == 3) {
+                        setSelectedList(
+                            selectedList.filter((faction) => faction.id !== 7 && faction.id != factionToCheck.id)
+                        );
+                    } else {
+                        return faction.id !== factionToCheck.id;
+                    }
+                })
+            );
         } else {
             setSelectedList([...selectedList, factionToCheck]);
         }
@@ -50,14 +62,23 @@ const App: FC = () => {
 
     return (
         <div className="App">
-            <h1>Root faction combination</h1>
-            <PlayerSelectionComponent
-                numberPlayer={numberPlayer}
-                onNumberPlayerChange={handleNumberPlayerChange}
-            />
-            <h2>
-                {currentTotalPresence} / {reachNeeded}+
-            </h2>
+            <div className="header">
+                <h1>Root faction combination</h1>
+                <PlayerSelectionComponent
+                    numberPlayer={numberPlayer}
+                    onNumberPlayerChange={handleNumberPlayerChange}
+                />
+                <h2>
+                    Total reach : {currentTotalPresence} / {reachNeeded}+
+                </h2>
+                <button
+                    onClick={() => {
+                        setSelectedList([]);
+                    }}
+                >
+                    Reset
+                </button>
+            </div>
             <div className="factionList">
                 {factionList.map((faction: IFaction, key: number) => {
                     const isSelected = selectedList.includes(faction);
@@ -65,17 +86,31 @@ const App: FC = () => {
                         !isSelected &&
                         (faction.reachValue + maxReachForCurrent < reachNeeded - currentTotalPresence ||
                             factionNeeded <= 0);
+
+                    let canDisplay = true;
+                    // Check pour afficher le 2e vagabond que si le 1er est sélectionné
+                    if (faction.id == 7) {
+                        canDisplay = selectedList.some((faction) => faction.id == 3);
+                    }
+
                     return (
-                        <FactionComponent
-                            key={faction.id}
-                            faction={faction}
-                            onFactionClick={handleFactionClick}
-                            selected={isSelected}
-                            disabled={isDisabled}
-                        />
+                        canDisplay && (
+                            <FactionComponent
+                                key={faction.id}
+                                faction={faction}
+                                onFactionClick={handleFactionClick}
+                                selected={isSelected}
+                                disabled={isDisabled}
+                            />
+                        )
                     );
                 })}
             </div>
+
+            <img
+                className="logo"
+                src={logo}
+            />
         </div>
     );
 };

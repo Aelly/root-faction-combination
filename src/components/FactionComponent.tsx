@@ -1,4 +1,3 @@
-import React from 'react';
 import { IFaction } from '../types/IFaction';
 import './FactionComponent.css';
 
@@ -16,6 +15,7 @@ const FactionComponent = ({ faction, onFactionClick, selected, disabled }: Props
 
     return (
         <div
+            style={{ color: faction.factionColor }}
             className={className}
             onClick={() => {
                 if (!isDisabled) onFactionClick(faction);
@@ -23,6 +23,7 @@ const FactionComponent = ({ faction, onFactionClick, selected, disabled }: Props
         >
             <h1>{faction.factionName}</h1>
             <h2>{faction.reachValue}</h2>
+            <img src={`${process.env.PUBLIC_URL}/icons/${faction.icon}`} />
         </div>
     );
 };

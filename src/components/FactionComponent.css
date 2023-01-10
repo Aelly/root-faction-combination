@@ -1,16 +1,27 @@
 .faction-card {
-    background-color: tomato;
-    width: 300px;
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    background-color: #1e1e1e;
+    box-shadow: 2px 2px 2px black;
+    border: 2px dashed;
+    opacity: 0.8;
 }
 
 .faction-card:hover:not(.disabled) {
-    background-color: aliceblue;
+    background-color: #303030;
 }
 
 .faction-card.selected {
-    background-color: yellowgreen;
+    background-color: #2e2e2e;
+    border: 2px solid;
+    opacity: 1;
 }
 
 .faction-card.disabled {
-    opacity: 0.5;
+    opacity: 0.2;
+}
+
+.faction-card img {
+    width: 100px;
 }
