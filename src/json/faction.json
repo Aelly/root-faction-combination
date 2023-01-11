@@ -61,5 +61,19 @@
         "reachValue": 2,
         "factionColor": "#F5EE7E",
         "icon": "Cult.png"
+    },
+    {
+        "id": 9,
+        "factionName": "Lord of Hundreds",
+        "reachValue": 9,
+        "factionColor": "#9B2137",
+        "icon": "Hundred2.png"
+    },
+    {
+        "id": 10,
+        "factionName": "Keeper in Iron",
+        "reachValue": 8,
+        "factionColor": "#9799A6",
+        "icon": "Iron.png"
     }
 ]
