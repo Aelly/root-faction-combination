@@ -1,10 +1,14 @@
-import { FC, useState } from 'react';
 import './App.css';
+
+import { FC, useState } from 'react';
 import FactionComponent from './components/FactionComponent';
-import { IFaction } from './types/IFaction';
-import factionList from './json/faction.json';
 import PlayerSelectionComponent from './components/PlayerSelectionComponent';
+
+import { IExtension, IFaction } from './types/IFaction';
+
 import logo from './assets/logo.png';
+import factionList from './json/faction.json';
+import extensionList from './json/extension.json';
 
 const App: FC = () => {
     const [selectedList, setSelectedList] = useState<IFaction[]>([]);
@@ -80,31 +84,37 @@ const App: FC = () => {
                 </button>
             </div>
             <div className="factionList">
-                {factionList.map((faction: IFaction, key: number) => {
-                    const isSelected = selectedList.includes(faction);
-                    const isDisabled =
-                        !isSelected &&
-                        (faction.reachValue + maxReachForCurrent < reachNeeded - currentTotalPresence ||
-                            factionNeeded <= 0);
+                {factionList
+                    .sort((a, b) => b.reachValue - a.reachValue)
+                    .map((faction: IFaction, key: number) => {
+                        const isSelected = selectedList.includes(faction);
+                        const isDisabled =
+                            !isSelected &&
+                            (faction.reachValue + maxReachForCurrent < reachNeeded - currentTotalPresence ||
+                                factionNeeded <= 0);
 
-                    let canDisplay = true;
-                    // Check pour afficher le 2e vagabond que si le 1er est sélectionné
-                    if (faction.id == 7) {
-                        canDisplay = selectedList.some((faction) => faction.id == 3);
-                    }
+                        let canDisplay = true;
+                        // Check pour afficher le 2e vagabond que si le 1er est sélectionné
+                        if (faction.id == 7) {
+                            canDisplay = selectedList.some((faction) => faction.id == 3);
+                        }
 
-                    return (
-                        canDisplay && (
-                            <FactionComponent
-                                key={faction.id}
-                                faction={faction}
-                                onFactionClick={handleFactionClick}
-                                selected={isSelected}
-                                disabled={isDisabled}
-                            />
-                        )
-                    );
-                })}
+                        return (
+                            canDisplay && (
+                                <FactionComponent
+                                    key={faction.id}
+                                    faction={faction}
+                                    extension={
+                                        extensionList.find((extension) => extension.id == faction.extensionId) ??
+                                        extensionList[0]
+                                    }
+                                    onFactionClick={handleFactionClick}
+                                    selected={isSelected}
+                                    disabled={isDisabled}
+                                />
+                            )
+                        );
+                    })}
             </div>
 
             <img

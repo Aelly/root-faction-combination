@@ -1,14 +1,15 @@
-import { IFaction } from '../types/IFaction';
+import { IExtension, IFaction } from '../types/IFaction';
 import './FactionComponent.css';
 
 interface Props {
     faction: IFaction;
+    extension: IExtension;
     onFactionClick(faction: IFaction): void;
     selected: boolean;
     disabled: boolean;
 }
 
-const FactionComponent = ({ faction, onFactionClick, selected, disabled }: Props) => {
+const FactionComponent = ({ faction, extension, onFactionClick, selected, disabled }: Props) => {
     var isSelected = selected ? ' selected' : '';
     var isDisabled = disabled ? ' disabled' : '';
     var className = 'faction-card ' + isSelected + isDisabled;
@@ -21,9 +22,18 @@ const FactionComponent = ({ faction, onFactionClick, selected, disabled }: Props
                 if (!isDisabled) onFactionClick(faction);
             }}
         >
-            <h1>{faction.factionName}</h1>
-            <h2>{faction.reachValue}</h2>
-            <img src={`${process.env.PUBLIC_URL}/icons/${faction.icon}`} />
+            <section className="header">
+                <h1>{faction.factionName}</h1>
+            </section>
+
+            <section className="content">
+                <img src={`${process.env.PUBLIC_URL}/icons/${faction.icon}`} />
+                <h2>{faction.reachValue}</h2>
+            </section>
+
+            <section className="footer">
+                <p>{extension.id != 0 && extension.extensionName}</p>
+            </section>
         </div>
     );
 };

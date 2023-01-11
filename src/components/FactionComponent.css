@@ -6,6 +6,9 @@
     box-shadow: 2px 2px 2px black;
     border: 2px dashed;
     opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
 }
 
 .faction-card:hover:not(.disabled) {
@@ -22,6 +25,28 @@
     opacity: 0.2;
 }
 
-.faction-card img {
+.faction-card .header {
+    flex-basis: 20%;
+}
+
+.faction-card .content {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.faction-card .content img {
     width: 100px;
+    height: 100px;
+}
+
+.faction-card .content h2 {
+    flex-grow: 30%;
+}
+
+.faction-card .footer {
+    font-size: 12px;
+    text-align: center;
 }

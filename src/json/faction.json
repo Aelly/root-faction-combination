@@ -4,76 +4,87 @@
         "factionName": "Marquise de Cat",
         "reachValue": 10,
         "factionColor": "#E67C20",
-        "icon": "Marquise.png"
+        "icon": "Marquise.png",
+        "extensionId": 0
     },
     {
         "id": 1,
         "factionName": "Underground Duchy",
         "reachValue": 8,
         "factionColor": "#EBC2A6",
-        "icon": "Duchy.png"
+        "icon": "Duchy.png",
+        "extensionId": 2
     },
     {
         "id": 2,
         "factionName": "The Eyrie",
         "reachValue": 7,
         "factionColor": "#508DCA",
-        "icon": "Eyrie.png"
+        "icon": "Eyrie.png",
+        "extensionId": 0
     },
     {
         "id": 3,
         "factionName": "Vagabond",
         "reachValue": 5,
         "factionColor": "#767676",
-        "icon": "Vagabond.png"
+        "icon": "Vagabond.png",
+        "extensionId": 0
     },
     {
         "id": 4,
         "factionName": "Riverfolk Company",
         "reachValue": 5,
         "factionColor": "#5FC2BF",
-        "icon": "Riverfolk.png"
+        "icon": "Riverfolk.png",
+        "extensionId": 1
     },
     {
         "id": 5,
         "factionName": "Woodland Alliance",
         "reachValue": 3,
         "factionColor": "#11A052",
-        "icon": "Alliance.png"
+        "icon": "Alliance.png",
+        "extensionId": 0
     },
     {
         "id": 6,
         "factionName": "Corvid Conspiracy",
         "reachValue": 3,
         "factionColor": "#8F5AA5",
-        "icon": "Corvid.png"
+        "icon": "Corvid.png",
+        "extensionId": 2
     },
     {
         "id": 7,
         "factionName": "2nd Vagabond",
         "reachValue": 2,
         "factionColor": "#626161",
-        "icon": "Vagabond.png"
+        "icon": "Vagabond.png",
+        "extensionId": 0
     },
     {
         "id": 8,
         "factionName": "Lizard Cult",
         "reachValue": 2,
         "factionColor": "#F5EE7E",
-        "icon": "Cult.png"
+        "icon": "Cult.png",
+        "extensionId": 1
     },
     {
         "id": 9,
         "factionName": "Lord of Hundreds",
         "reachValue": 9,
         "factionColor": "#9B2137",
-        "icon": "Hundred2.png"
+        "icon": "Hundred.png",
+        "extensionId": 3
     },
     {
         "id": 10,
         "factionName": "Keeper in Iron",
         "reachValue": 8,
         "factionColor": "#9799A6",
-        "icon": "Iron.png"
+        "icon": "Iron.png",
+        "extensionId": 3
     }
 ]
