@@ -1,4 +1,4 @@
-import { IExtension, IFaction } from '../types/IFaction';
+import { IExtension, IFaction } from '../../types/IFaction';
 import './FactionComponent.css';
 
 interface Props {
