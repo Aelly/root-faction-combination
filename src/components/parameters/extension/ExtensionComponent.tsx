@@ -16,7 +16,7 @@ const ExtensionComponent = ({ extension, onExtensionClick, selected }: Props) =>
             className={className}
             onClick={() => onExtensionClick(extension)}
         >
-            <h2>{extension.extensionName}</h2>
+            <h4>{extension.extensionName}</h4>
         </div>
     );
 };

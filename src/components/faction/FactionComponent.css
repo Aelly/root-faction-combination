@@ -25,11 +25,11 @@
     opacity: 0.2;
 }
 
-.faction-card .header {
+.faction-card .faction-header {
     flex-basis: 20%;
 }
 
-.faction-card .content {
+.faction-card .faction-content {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
@@ -37,16 +37,16 @@
     align-items: center;
 }
 
-.faction-card .content img {
+.faction-card .faction-content img {
     width: 100px;
     height: 100px;
 }
 
-.faction-card .content h2 {
+.faction-card .faction-content h2 {
     flex-grow: 30%;
 }
 
-.faction-card .footer {
+.faction-card .faction-footer {
     font-size: 12px;
     text-align: center;
 }

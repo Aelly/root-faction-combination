@@ -59,7 +59,11 @@ const FactionListComponent = ({
     return (
         <div className="factionList">
             {factionList
-                .filter((faction) => extensionSelectedList.some((extension) => extension.id == faction.extensionId))
+                .filter(
+                    (faction) =>
+                        faction.extensionId == 0 ||
+                        extensionSelectedList.some((extension) => extension.id == faction.extensionId)
+                )
                 .sort((a, b) => b.reachValue - a.reachValue)
                 .map((faction: IFaction, key: number) => {
                     const isSelected = selectedList.includes(faction);

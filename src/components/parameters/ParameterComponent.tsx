@@ -1,4 +1,5 @@
 import React from 'react';
+import './ParameterComponent.css';
 import { IExtension, IFaction } from '../../types/IFaction';
 import PlayerSelectionComponent from '../PlayerSelectionComponent';
 import ExtensionListComponent from './extension/ExtensionListComponent';
@@ -38,19 +39,21 @@ const ParameterComponent = ({
     };
 
     return (
-        <>
-            <PlayerSelectionComponent
-                numberPlayer={numberPlayer}
-                onNumberPlayerChange={handleNumberPlayerChange}
-            />
-
-            <h2>{`Reach : ${currentTotalReach}/${reachNeeded}`}</h2>
-
+        <div className="parameters">
             <ExtensionListComponent
                 selectedList={selectedExtensionList}
                 onExtensionSelectionChange={handleExtensionSelectionChange}
             />
-        </>
+
+            <section className="reach">
+                <PlayerSelectionComponent
+                    numberPlayer={numberPlayer}
+                    onNumberPlayerChange={handleNumberPlayerChange}
+                />
+
+                <h3>{`Reach : ${currentTotalReach}/${reachNeeded}+`}</h3>
+            </section>
+        </div>
     );
 };
 

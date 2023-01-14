@@ -1,13 +1,13 @@
 .extension-card {
-    width: 400px;
-    height: 50px;
+    width: 300px;
+    height: 30px;
     background-color: #1e1e1e;
     box-shadow: 2px 2px 2px black;
-    border: 2px dashed;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0.8;
+    border-radius: 5px;
 }
 
 .extension-card:hover:not(.disabled) {
@@ -16,7 +16,7 @@
 
 .extension-card.selected {
     background-color: #2e2e2e;
-    border: 2px solid;
+    border: 1px solid;
     border-color: rgb(63, 163, 32);
     opacity: 1;
 }

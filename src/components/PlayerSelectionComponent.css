@@ -37,6 +37,7 @@ select::-ms-expand {
     display: grid;
     grid-template-areas: 'select';
     align-items: center;
+    margin-left: 10px;
 }
 
 .select::after {

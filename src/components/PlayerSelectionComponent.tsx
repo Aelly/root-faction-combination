@@ -13,7 +13,7 @@ const PlayerSelectionComponent = ({ numberPlayer, onNumberPlayerChange }: Props)
 
     return (
         <div className="player-selection">
-            <h2>Number of player :</h2>
+            <h3>Number of player :</h3>
             <div className="select">
                 <select
                     value={numberPlayer}

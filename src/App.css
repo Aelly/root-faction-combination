@@ -12,6 +12,7 @@
 :root {
     --default-text-color: #e0e0e0;
     --background-color: #1a2027;
+    --accent-color: #aa4226;
 }
 
 body {
@@ -31,8 +32,23 @@ button {
     font-size: 16px;
 }
 
-.header {
+.header h1 {
     text-align: center;
+    color: var(--accent-color);
+}
+
+.explanation {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.explanation ol {
+    margin-left: 10px;
+}
+
+.explanation li {
+    margin-left: 12px;
 }
 
 .logo {
