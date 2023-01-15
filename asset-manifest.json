@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/root-faction-combination/static/css/main.971a43a0.css",
-    "main.js": "/root-faction-combination/static/js/main.c6f1a88b.js",
+    "main.css": "/root-faction-combination/static/css/main.c7322999.css",
+    "main.js": "/root-faction-combination/static/js/main.d01af0a7.js",
     "static/js/787.8194d284.chunk.js": "/root-faction-combination/static/js/787.8194d284.chunk.js",
     "static/media/Quattrocento-Regular.ttf": "/root-faction-combination/static/media/Quattrocento-Regular.3d1b0443d0ee295dc542.ttf",
     "static/media/logo.png": "/root-faction-combination/static/media/logo.d4221f49231cf25033f6.png",
     "index.html": "/root-faction-combination/index.html",
-    "main.971a43a0.css.map": "/root-faction-combination/static/css/main.971a43a0.css.map",
-    "main.c6f1a88b.js.map": "/root-faction-combination/static/js/main.c6f1a88b.js.map",
+    "main.c7322999.css.map": "/root-faction-combination/static/css/main.c7322999.css.map",
+    "main.d01af0a7.js.map": "/root-faction-combination/static/js/main.d01af0a7.js.map",
     "787.8194d284.chunk.js.map": "/root-faction-combination/static/js/787.8194d284.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.971a43a0.css",
-    "static/js/main.c6f1a88b.js"
+    "static/css/main.c7322999.css",
+    "static/js/main.d01af0a7.js"
   ]
 }
