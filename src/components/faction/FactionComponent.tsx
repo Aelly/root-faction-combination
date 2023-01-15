@@ -28,12 +28,15 @@ const FactionComponent = ({ faction, extension, onFactionClick, selected, disabl
                 </section>
 
                 <section className="faction-content">
-                    <img src={`${process.env.PUBLIC_URL}/icons/${faction.icon}`} />
+                    <img
+                        src={`${process.env.PUBLIC_URL}/icons/${faction.icon}`}
+                        alt="faction logo"
+                    />
                     <h2>{faction.reachValue}</h2>
                 </section>
 
                 <section className="faction-footer">
-                    <p>{extension.id != 0 && extension.extensionName}</p>
+                    <p>{extension.id !== 0 && extension.extensionName}</p>
                 </section>
             </div>
         </div>

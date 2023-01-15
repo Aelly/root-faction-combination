@@ -31,7 +31,7 @@ const ParameterComponent = ({
     const handleExtensionSelectionChange = (extensionToCheck: IExtension): void => {
         const isSelected = selectedExtensionList.includes(extensionToCheck);
         if (isSelected) {
-            setSelectedExtensionList(selectedExtensionList.filter((extension) => extensionToCheck.id != extension.id));
+            setSelectedExtensionList(selectedExtensionList.filter((extension) => extensionToCheck.id !== extension.id));
         } else {
             setSelectedExtensionList([...selectedExtensionList, extensionToCheck]);
         }

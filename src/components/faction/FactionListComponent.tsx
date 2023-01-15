@@ -33,8 +33,8 @@ const FactionListComponent = ({
             // Si on désélectionné le vagabond 1, on va aussi déselectionner le vagabond 2
             setSelectedList(
                 selectedList.filter((faction) => {
-                    if (factionToCheck.id == 3) {
-                        return faction.id !== 7 && faction.id != factionToCheck.id;
+                    if (factionToCheck.id === 3) {
+                        return faction.id !== 7 && faction.id !== factionToCheck.id;
                     } else {
                         return faction.id !== factionToCheck.id;
                     }
@@ -61,11 +61,11 @@ const FactionListComponent = ({
             {factionList
                 .filter(
                     (faction) =>
-                        faction.extensionId == 0 ||
-                        extensionSelectedList.some((extension) => extension.id == faction.extensionId)
+                        faction.extensionId === 0 ||
+                        extensionSelectedList.some((extension) => extension.id === faction.extensionId)
                 )
                 .sort((a, b) => b.reachValue - a.reachValue)
-                .map((faction: IFaction, key: number) => {
+                .map((faction: IFaction) => {
                     const isSelected = selectedList.includes(faction);
                     const isDisabled =
                         !isSelected &&
@@ -74,8 +74,8 @@ const FactionListComponent = ({
 
                     let canDisplay = true;
                     // Check pour afficher le 2e vagabond que si le 1er est sélectionné
-                    if (faction.id == 7) {
-                        canDisplay = selectedList.some((faction) => faction.id == 3);
+                    if (faction.id === 7) {
+                        canDisplay = selectedList.some((faction) => faction.id === 3);
                     }
 
                     return (
@@ -84,7 +84,7 @@ const FactionListComponent = ({
                                 key={faction.id}
                                 faction={faction}
                                 extension={
-                                    extensionList.find((extension) => extension.id == faction.extensionId) ??
+                                    extensionList.find((extension) => extension.id === faction.extensionId) ??
                                     extensionList[0]
                                 }
                                 onFactionClick={handleFactionClick}

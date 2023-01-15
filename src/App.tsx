@@ -82,6 +82,7 @@ const App: FC = () => {
             <img
                 className="logo"
                 src={logo}
+                alt="page logo"
             />
         </div>
     );
