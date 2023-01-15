@@ -23,13 +23,40 @@ body {
 }
 
 button {
-    background-color: #fff;
-    border: none;
-    padding: 0.1em 0.5em;
+    background-color: var(--accent-color);
+    color: var(--default-text-color);
+    box-shadow: 2px 2px 2px black;
+    border-radius: 5px;
+    border: 1px solid var(--accent-color);
+    padding: 0.5em 0.5em;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
+    width: fit-content;
+    height: fit-content;
+}
+
+/* No hover effect on touch screen */
+@media (hover: hover) and (pointer: fine) {
+    button:hover {
+        cursor: pointer;
+        border: 1px solid var(--default-text-color);
+    }
+}
+
+button:active {
+    box-shadow: 5px 5px 5px black;
+}
+
+.reset-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header h1 {

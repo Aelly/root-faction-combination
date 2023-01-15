@@ -63,7 +63,12 @@ const App: FC = () => {
                 />
             </div>
 
-            <button onClick={() => setSelectedFactionList([])}>Reset faction selection</button>
+            <button
+                className="reset-btn"
+                onClick={() => setSelectedFactionList([])}
+            >
+                Reset faction selection
+            </button>
 
             <FactionListComponent
                 selectedList={selectedFactionList}

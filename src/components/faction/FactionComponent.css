@@ -1,3 +1,9 @@
+.faction-container {
+    flex-basis: 25%;
+    justify-content: center;
+    display: flex;
+}
+
 .faction-card {
     border-radius: 5px;
     width: 200px;
@@ -11,8 +17,12 @@
     padding: 5px;
 }
 
-.faction-card:hover:not(.disabled) {
-    background-color: #303030;
+/* No hover effect on touch screen */
+@media (hover: hover) and (pointer: fine) {
+    .faction-card:hover:not(.disabled) {
+        background-color: #303030;
+        cursor: pointer;
+    }
 }
 
 .faction-card.selected {
@@ -49,4 +59,30 @@
 .faction-card .faction-footer {
     font-size: 12px;
     text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+    .faction-container {
+        flex-basis: 33%;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .faction-container {
+        flex-basis: 50%;
+    }
+
+    .faction-card {
+        width: 150px;
+        height: 150px;
+    }
+
+    .faction-card .faction-content img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .faction-card .faction-header h1 {
+        font-size: 15px;
+    }
 }
