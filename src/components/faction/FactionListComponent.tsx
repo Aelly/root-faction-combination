@@ -1,31 +1,21 @@
 import './FactionListComponent.css';
 
-import React from 'react';
+import { IExtension, IFaction } from '../../types/IFaction';
 
+import CombinationUtils from '../../utils/CombinationUtil';
 import FactionComponent from './FactionComponent';
-
-import { IFaction, IExtension } from '../../types/IFaction';
-
-import factionList from '../../json/faction.json';
+import React from 'react';
 import extensionList from '../../json/extension.json';
+import factionList from '../../json/faction.json';
 
 interface Props {
     selectedList: IFaction[];
     setSelectedList: React.Dispatch<React.SetStateAction<IFaction[]>>;
     extensionSelectedList: IExtension[];
     numberPlayer: number;
-    reachNeeded: number;
-    currentTotalPresence: number;
 }
 
-const FactionListComponent = ({
-    selectedList,
-    setSelectedList,
-    extensionSelectedList,
-    numberPlayer,
-    reachNeeded,
-    currentTotalPresence,
-}: Props) => {
+const FactionListComponent = ({ selectedList, setSelectedList, extensionSelectedList, numberPlayer }: Props) => {
     const handleFactionClick = (factionToCheck: IFaction): void => {
         const isSelected = selectedList.includes(factionToCheck);
         // Si c'est sélectionné on déselectionne
@@ -45,17 +35,6 @@ const FactionListComponent = ({
         }
     };
 
-    const factionNotPickedByReach = factionList
-        .filter((faction) => !selectedList.includes(faction))
-        .sort((a, b) => b.reachValue - a.reachValue);
-    const factionNeeded = numberPlayer - selectedList.length;
-    const maxReachForCurrent =
-        factionNeeded > 0
-            ? factionNotPickedByReach.slice(0, factionNeeded - 1).reduce((accumulator, faction) => {
-                  return accumulator + faction.reachValue;
-              }, 0)
-            : 0;
-
     return (
         <div className="factionList">
             {factionList
@@ -69,8 +48,7 @@ const FactionListComponent = ({
                     const isSelected = selectedList.includes(faction);
                     const isDisabled =
                         !isSelected &&
-                        (faction.reachValue + maxReachForCurrent < reachNeeded - currentTotalPresence ||
-                            factionNeeded <= 0);
+                        CombinationUtils.canPickFaction(factionList, selectedList, faction, numberPlayer);
 
                     let canDisplay = true;
                     // Check pour afficher le 2e vagabond que si le 1er est sélectionné

@@ -3,17 +3,25 @@ import { IFaction } from '../../types/IFaction';
 
 describe('Reach util', () => {
     class FactionMock implements IFaction {
-        id: number = 0;
+        id: number;
         factionName: string = '';
         reachValue: number;
         factionColor: string = '';
         icon: string = '';
         extensionId: number = 0;
 
-        constructor(reachValue: number) {
+        constructor(id: number, reachValue: number) {
+            this.id = id;
             this.reachValue = reachValue;
         }
     }
+
+    const f1: FactionMock = new FactionMock(0, 10);
+    const f2: FactionMock = new FactionMock(1, 8);
+    const f3: FactionMock = new FactionMock(2, 5);
+    const f4: FactionMock = new FactionMock(3, 5);
+    const f5: FactionMock = new FactionMock(4, 3);
+    const f6: FactionMock = new FactionMock(5, 2);
 
     it('Return the correct value depending on the number of player', () => {
         expect(CombinationUtils.getReachValueForPlayer(2)).toBe(17);
@@ -24,60 +32,62 @@ describe('Reach util', () => {
     });
 
     it('Can compute the total reach value of a game configuration', () => {
-        const faction1: FactionMock = new FactionMock(10);
-        const faction2: FactionMock = new FactionMock(5);
-        const faction3: FactionMock = new FactionMock(3);
-
         expect(CombinationUtils.getCurrentTotalReach([])).toBe(0);
-        expect(CombinationUtils.getCurrentTotalReach([faction1])).toBe(10);
-        expect(CombinationUtils.getCurrentTotalReach([faction1, faction2, faction3])).toBe(18);
+        expect(CombinationUtils.getCurrentTotalReach([f1])).toBe(10);
+        expect(CombinationUtils.getCurrentTotalReach([f1, f2, f3])).toBe(23);
     });
 
-    it.todo('Can fill a valid configuration with random faction', () => {
-        const f1: FactionMock = new FactionMock(10);
-        const f2: FactionMock = new FactionMock(8);
-        const f3: FactionMock = new FactionMock(5);
-        const f4: FactionMock = new FactionMock(5);
-        const f5: FactionMock = new FactionMock(3);
-        const f6: FactionMock = new FactionMock(2);
+    it('Can check if a configuration is valid', () => {
+        // Good number of faction
+        expect(CombinationUtils.isConfigurationValid([], 2)).toBe(false);
+        expect(CombinationUtils.isConfigurationValid([], 4)).toBe(false);
+        expect(CombinationUtils.isConfigurationValid([f1, f2], 3)).toEqual(false);
+        expect(CombinationUtils.isConfigurationValid([f1, f2, f3], 3)).toEqual(true);
+        expect(CombinationUtils.isConfigurationValid([f1, f2, f3], 2)).toEqual(false);
 
-        const possibleFaction: IFaction[] = [f1, f2, f3, f4, f5, f6];
+        // No duplicate faction
+        expect(CombinationUtils.isConfigurationValid([f1, f2, f2], 3)).toBe(false);
+
+        // Valid total reach
+        expect(CombinationUtils.isConfigurationValid([f1, f2, f3], 3)).toBe(true);
+        expect(CombinationUtils.isConfigurationValid([f4, f5, f6], 3)).toBe(false);
+    });
+
+    it('Can fill a valid configuration with random faction', () => {
+        const factionList: IFaction[] = [f1, f2, f3, f4, f5, f6];
         const testSelectedEmpty: IFaction[] = [];
         const testSelectedElemenButNotFilled: IFaction[] = [f1, f2];
         const testSelectedFilled: IFaction[] = [f1, f2, f3, f4, f5];
 
-        // Pick the right amount of faction
-        expect(CombinationUtils.FillGameRandomly(testSelectedEmpty, 5, possibleFaction).length).toBe(5);
-        expect(CombinationUtils.FillGameRandomly(testSelectedElemenButNotFilled, 5, possibleFaction).length).toBe(5);
-        expect(CombinationUtils.FillGameRandomly(testSelectedFilled, 5, possibleFaction).length).toBe(5);
-        expect(CombinationUtils.FillGameRandomly(testSelectedEmpty, 3, possibleFaction).length).toBe(3);
-        expect(CombinationUtils.FillGameRandomly(testSelectedEmpty, 2, possibleFaction).length).toBe(2);
-
-        // Game is valid
         expect(
-            CombinationUtils.getCurrentTotalReach(
-                CombinationUtils.FillGameRandomly(testSelectedEmpty, 5, possibleFaction)
+            CombinationUtils.isConfigurationValid(
+                CombinationUtils.fillGameRandomly(testSelectedEmpty, 5, factionList),
+                5
             )
-        ).toBeGreaterThanOrEqual(CombinationUtils.getReachValueForPlayer(5));
+        ).toBe(true);
         expect(
-            CombinationUtils.getCurrentTotalReach(
-                CombinationUtils.FillGameRandomly(testSelectedElemenButNotFilled, 5, possibleFaction)
+            CombinationUtils.isConfigurationValid(
+                CombinationUtils.fillGameRandomly(testSelectedElemenButNotFilled, 5, factionList),
+                5
             )
-        ).toBeGreaterThanOrEqual(CombinationUtils.getReachValueForPlayer(5));
+        ).toBe(true);
         expect(
-            CombinationUtils.getCurrentTotalReach(
-                CombinationUtils.FillGameRandomly(testSelectedFilled, 5, possibleFaction)
+            CombinationUtils.isConfigurationValid(
+                CombinationUtils.fillGameRandomly(testSelectedFilled, 5, factionList),
+                5
             )
-        ).toBeGreaterThanOrEqual(CombinationUtils.getReachValueForPlayer(5));
+        ).toBe(true);
         expect(
-            CombinationUtils.getCurrentTotalReach(
-                CombinationUtils.FillGameRandomly(testSelectedEmpty, 3, possibleFaction)
+            CombinationUtils.isConfigurationValid(
+                CombinationUtils.fillGameRandomly(testSelectedEmpty, 3, factionList),
+                3
             )
-        ).toBeGreaterThanOrEqual(CombinationUtils.getReachValueForPlayer(3));
+        ).toBe(true);
         expect(
-            CombinationUtils.getCurrentTotalReach(
-                CombinationUtils.FillGameRandomly(testSelectedEmpty, 2, possibleFaction)
+            CombinationUtils.isConfigurationValid(
+                CombinationUtils.fillGameRandomly(testSelectedEmpty, 2, factionList),
+                2
             )
-        ).toBeGreaterThanOrEqual(CombinationUtils.getReachValueForPlayer(3));
+        ).toBe(true);
     });
 });

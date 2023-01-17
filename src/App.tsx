@@ -6,6 +6,7 @@ import { IExtension, IFaction } from './types/IFaction';
 import CombinationUtils from './utils/CombinationUtil';
 import FactionListComponent from './components/faction/FactionListComponent';
 import ParameterComponent from './components/parameters/ParameterComponent';
+import factionList from './json/faction.json';
 import logo from './assets/logo.png';
 
 const App: FC = () => {
@@ -15,6 +16,8 @@ const App: FC = () => {
 
     const reachNeeded = CombinationUtils.getReachValueForPlayer(numberPlayer);
     const currentTotalReach = CombinationUtils.getCurrentTotalReach(selectedFactionList);
+
+    // TODO Récupérer la liste des factions à afficher ici, faire une fonction utilitaire (gestion des extensions) et la passer au factionListComponent (comme ça on peut l'utiliser aussi pour la game random)
 
     return (
         <div className="App">
@@ -55,16 +58,14 @@ const App: FC = () => {
             </div>
 
             <div className="buttons">
-                <button
-                    className="reset-btn"
-                    onClick={() => setSelectedFactionList([])}
-                >
-                    Reset faction selection
-                </button>
+                <button onClick={() => setSelectedFactionList([])}>Reset faction selection</button>
 
                 <button
-                    className="reset-btn"
-                    onClick={() => setSelectedFactionList([])}
+                    onClick={() =>
+                        setSelectedFactionList(
+                            CombinationUtils.fillGameRandomly(selectedFactionList, numberPlayer, factionList)
+                        )
+                    }
                 >
                     Fill randomly
                 </button>
@@ -75,8 +76,6 @@ const App: FC = () => {
                 setSelectedList={setSelectedFactionList}
                 extensionSelectedList={selectedExtensionList}
                 numberPlayer={numberPlayer}
-                reachNeeded={reachNeeded}
-                currentTotalPresence={currentTotalReach}
             />
 
             <img
