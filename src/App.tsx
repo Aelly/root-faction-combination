@@ -1,29 +1,20 @@
 import './App.css';
 
 import { FC, useState } from 'react';
-
 import { IExtension, IFaction } from './types/IFaction';
 
-import logo from './assets/logo.png';
+import CombinationUtils from './utils/CombinationUtil';
 import FactionListComponent from './components/faction/FactionListComponent';
 import ParameterComponent from './components/parameters/ParameterComponent';
+import logo from './assets/logo.png';
 
 const App: FC = () => {
     const [selectedFactionList, setSelectedFactionList] = useState<IFaction[]>([]);
     const [selectedExtensionList, setSelectedExtensionList] = useState<IExtension[]>([]);
     const [numberPlayer, setNumberPlayer] = useState<number>(4);
 
-    const reachNeededDictionnary: Map<number, number> = new Map<number, number>();
-    reachNeededDictionnary.set(2, 17);
-    reachNeededDictionnary.set(3, 18);
-    reachNeededDictionnary.set(4, 21);
-    reachNeededDictionnary.set(5, 25);
-    reachNeededDictionnary.set(6, 28);
-
-    const reachNeeded = reachNeededDictionnary.get(numberPlayer) || 17;
-    const currentTotalReach = selectedFactionList.reduce((accumulator, faction) => {
-        return accumulator + faction.reachValue;
-    }, 0);
+    const reachNeeded = CombinationUtils.getReachValueForPlayer(numberPlayer);
+    const currentTotalReach = CombinationUtils.getCurrentTotalReach(selectedFactionList);
 
     return (
         <div className="App">
@@ -63,12 +54,21 @@ const App: FC = () => {
                 />
             </div>
 
-            <button
-                className="reset-btn"
-                onClick={() => setSelectedFactionList([])}
-            >
-                Reset faction selection
-            </button>
+            <div className="buttons">
+                <button
+                    className="reset-btn"
+                    onClick={() => setSelectedFactionList([])}
+                >
+                    Reset faction selection
+                </button>
+
+                <button
+                    className="reset-btn"
+                    onClick={() => setSelectedFactionList([])}
+                >
+                    Fill randomly
+                </button>
+            </div>
 
             <FactionListComponent
                 selectedList={selectedFactionList}

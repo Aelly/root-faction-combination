@@ -78,6 +78,12 @@ button:active {
     margin-left: 12px;
 }
 
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .logo {
     position: fixed;
     right: 0;

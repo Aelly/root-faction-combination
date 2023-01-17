@@ -1,7 +1,7 @@
 import React from 'react';
 import './ParameterComponent.css';
 import { IExtension, IFaction } from '../../types/IFaction';
-import PlayerSelectionComponent from '../PlayerSelectionComponent';
+import PlayerSelectionComponent from './player/PlayerSelectionComponent';
 import ExtensionListComponent from './extension/ExtensionListComponent';
 
 interface Props {
