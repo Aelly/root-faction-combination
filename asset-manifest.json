@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/root-faction-combination/static/css/main.c7322999.css",
-    "main.js": "/root-faction-combination/static/js/main.58ca292b.js",
+    "main.css": "/root-faction-combination/static/css/main.c5eefbb2.css",
+    "main.js": "/root-faction-combination/static/js/main.35994e45.js",
     "static/media/Quattrocento-Regular.ttf": "/root-faction-combination/static/media/Quattrocento-Regular.3d1b0443d0ee295dc542.ttf",
     "static/media/logo.png": "/root-faction-combination/static/media/logo.d4221f49231cf25033f6.png",
     "index.html": "/root-faction-combination/index.html",
-    "main.c7322999.css.map": "/root-faction-combination/static/css/main.c7322999.css.map",
-    "main.58ca292b.js.map": "/root-faction-combination/static/js/main.58ca292b.js.map"
+    "main.c5eefbb2.css.map": "/root-faction-combination/static/css/main.c5eefbb2.css.map",
+    "main.35994e45.js.map": "/root-faction-combination/static/js/main.35994e45.js.map"
   },
   "entrypoints": [
-    "static/css/main.c7322999.css",
-    "static/js/main.58ca292b.js"
+    "static/css/main.c5eefbb2.css",
+    "static/js/main.35994e45.js"
   ]
 }
