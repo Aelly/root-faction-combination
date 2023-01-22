@@ -61,7 +61,8 @@
         "reachValue": 2,
         "factionColor": "#626161",
         "icon": "Vagabond.png",
-        "extensionId": 1
+        "extensionId": 1,
+        "requiredFactionId": 3
     },
     {
         "id": 8,

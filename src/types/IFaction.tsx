@@ -10,6 +10,7 @@ interface IFaction {
     factionColor: string;
     icon: string;
     extensionId: number;
+    requiredFactionId?: number;
 }
 
 export type { IFaction, IExtension };

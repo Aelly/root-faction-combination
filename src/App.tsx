@@ -18,6 +18,7 @@ const App: FC = () => {
     const currentTotalReach = CombinationUtils.getCurrentTotalReach(selectedFactionList);
 
     // TODO Récupérer la liste des factions à afficher ici, faire une fonction utilitaire (gestion des extensions) et la passer au factionListComponent (comme ça on peut l'utiliser aussi pour la game random)
+    const filteredFactionList = CombinationUtils.filterByExtenion(factionList, selectedExtensionList);
 
     return (
         <div className="App">
@@ -61,20 +62,20 @@ const App: FC = () => {
                 <button onClick={() => setSelectedFactionList([])}>Reset faction selection</button>
 
                 <button
-                    onClick={() =>
+                    onClick={() => {
                         setSelectedFactionList(
-                            CombinationUtils.fillGameRandomly(selectedFactionList, numberPlayer, factionList)
-                        )
-                    }
+                            CombinationUtils.fillGameRandomly(selectedFactionList, numberPlayer, filteredFactionList)
+                        );
+                    }}
                 >
                     Fill randomly
                 </button>
             </div>
 
             <FactionListComponent
+                factionList={filteredFactionList}
                 selectedList={selectedFactionList}
                 setSelectedList={setSelectedFactionList}
-                extensionSelectedList={selectedExtensionList}
                 numberPlayer={numberPlayer}
             />
 
