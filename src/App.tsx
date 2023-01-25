@@ -17,7 +17,6 @@ const App: FC = () => {
     const reachNeeded = CombinationUtils.getReachValueForPlayer(numberPlayer);
     const currentTotalReach = CombinationUtils.getCurrentTotalReach(selectedFactionList);
 
-    // TODO Récupérer la liste des factions à afficher ici, faire une fonction utilitaire (gestion des extensions) et la passer au factionListComponent (comme ça on peut l'utiliser aussi pour la game random)
     const filteredFactionList = CombinationUtils.filterByExtenion(factionList, selectedExtensionList);
 
     return (
