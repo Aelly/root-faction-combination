@@ -60,9 +60,14 @@ const App: FC = () => {
 
                 <button
                     onClick={() => {
-                        setSelectedFactionList(
-                            CombinationUtils.fillGameRandomly(selectedFactionList, numberPlayer, filteredFactionList)
-                        );
+                        if (filteredFactionList.length >= numberPlayer)
+                            setSelectedFactionList(
+                                CombinationUtils.fillGameRandomly(
+                                    selectedFactionList,
+                                    numberPlayer,
+                                    filteredFactionList
+                                )
+                            );
                     }}
                 >
                     Fill randomly
