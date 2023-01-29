@@ -1,13 +1,15 @@
 import './ExtensionListComponent.css';
-import extensionList from '../../../json/extension.json';
-import { IExtension } from '../../../types/IFaction';
+
 import ExtensionComponent from './ExtensionComponent';
+import { IExtension } from '../../../types/IFaction';
+import extensionList from '../../../json/extension.json';
 
 interface Props {
     selectedList: IExtension[];
     onExtensionSelectionChange(extension: IExtension): void;
 }
 
+// Simple component the handle the mapping from an IExtension to the ExtensionComponent.
 const ExtensionListComponent = ({ selectedList, onExtensionSelectionChange }: Props) => {
     return (
         <div className="extension-list">

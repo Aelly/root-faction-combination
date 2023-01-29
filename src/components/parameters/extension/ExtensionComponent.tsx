@@ -1,4 +1,5 @@
 import './ExtensionComponent.css';
+
 import { IExtension } from '../../../types/IFaction';
 
 interface Props {
@@ -7,6 +8,7 @@ interface Props {
     selected: boolean;
 }
 
+// Display an extension as a selectable card.
 const ExtensionComponent = ({ extension, onExtensionClick, selected }: Props) => {
     var isSelected = selected ? ' selected' : '';
     var className = 'extension-card ' + isSelected;

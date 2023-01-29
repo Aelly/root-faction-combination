@@ -1,27 +1,30 @@
-import React from 'react';
 import './ParameterComponent.css';
+
 import { IExtension, IFaction } from '../../types/IFaction';
-import PlayerSelectionComponent from './player/PlayerSelectionComponent';
+
+import CombinationUtils from '../../utils/CombinationUtil';
 import ExtensionListComponent from './extension/ExtensionListComponent';
+import PlayerSelectionComponent from './player/PlayerSelectionComponent';
+import React from 'react';
 
 interface Props {
     numberPlayer: number;
     setNumberPlayer: React.Dispatch<React.SetStateAction<number>>;
     selectedExtensionList: IExtension[];
     setSelectedExtensionList: React.Dispatch<React.SetStateAction<IExtension[]>>;
+    selectedFactionList: IFaction[];
     setSelectedFactionList: React.Dispatch<React.SetStateAction<IFaction[]>>;
-    reachNeeded: number;
-    currentTotalReach: number;
 }
 
+// Container component to wrap the two parametrable parameter of a game : the number of player and the extension owned.
+// The management of the corresponding state is handled here and only the current state and a hook to change it is passed to the component below.
 const ParameterComponent = ({
     numberPlayer,
     setNumberPlayer,
     selectedExtensionList,
     setSelectedExtensionList,
+    selectedFactionList,
     setSelectedFactionList,
-    reachNeeded,
-    currentTotalReach,
 }: Props) => {
     const handleNumberPlayerChange = (newNumberPlayer: number): void => {
         setNumberPlayer(newNumberPlayer);
@@ -37,6 +40,9 @@ const ParameterComponent = ({
         }
         setSelectedFactionList([]);
     };
+
+    const reachNeeded = CombinationUtils.getReachValueForPlayer(numberPlayer);
+    const currentTotalReach = CombinationUtils.getCurrentTotalReach(selectedFactionList);
 
     return (
         <div className="parameters">

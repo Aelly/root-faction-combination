@@ -9,13 +9,12 @@ import ParameterComponent from './components/parameters/ParameterComponent';
 import factionList from './json/faction.json';
 import logo from './assets/logo.png';
 
+// The root of the application, contain the explanation at the top, the two buttons and all the other component.
+// The three state of the application (faction selected, extension selected and number of player) are stored here.
 const App: FC = () => {
     const [selectedFactionList, setSelectedFactionList] = useState<IFaction[]>([]);
     const [selectedExtensionList, setSelectedExtensionList] = useState<IExtension[]>([]);
     const [numberPlayer, setNumberPlayer] = useState<number>(4);
-
-    const reachNeeded = CombinationUtils.getReachValueForPlayer(numberPlayer);
-    const currentTotalReach = CombinationUtils.getCurrentTotalReach(selectedFactionList);
 
     const filteredFactionList = CombinationUtils.filterByExtenion(factionList, selectedExtensionList);
 
@@ -51,9 +50,8 @@ const App: FC = () => {
                     setNumberPlayer={setNumberPlayer}
                     selectedExtensionList={selectedExtensionList}
                     setSelectedExtensionList={setSelectedExtensionList}
+                    selectedFactionList={selectedFactionList}
                     setSelectedFactionList={setSelectedFactionList}
-                    reachNeeded={reachNeeded}
-                    currentTotalReach={currentTotalReach}
                 />
             </div>
 

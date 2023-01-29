@@ -41,6 +41,8 @@ git clone https://github.com/Aelly/root-faction-combination.git
 npm install
 ```
 
+I was concerned with the 6 hight severity vulnerabilities but from what I understood the best things to do is ignore them ([source](https://overreacted.io/npm-audit-broken-by-design/)). When I tried to fix them, it just rolled me back to an old typescript version and I had even more vulnerabilities anyway. If anyone know more about it please explain it to me !
+
 3. Start the application
 ```shell
 npm run start

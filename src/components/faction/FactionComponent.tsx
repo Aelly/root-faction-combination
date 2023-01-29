@@ -1,5 +1,6 @@
-import { IExtension, IFaction } from '../../types/IFaction';
 import './FactionComponent.css';
+
+import { IExtension, IFaction } from '../../types/IFaction';
 
 interface Props {
     faction: IFaction;
@@ -9,6 +10,7 @@ interface Props {
     disabled: boolean;
 }
 
+// Simple component to display a faction as a selectionnable (or disabled) card.
 const FactionComponent = ({ faction, extension, onFactionClick, selected, disabled }: Props) => {
     var isSelected = selected ? ' selected' : '';
     var isDisabled = disabled ? ' disabled' : '';

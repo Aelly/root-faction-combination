@@ -14,6 +14,7 @@ interface Props {
     numberPlayer: number;
 }
 
+//  Handle the selection of a faction and the mapping from a IFaction to a FactionComponent with the valid property depending of the state of the combination.
 const FactionListComponent = ({ factionList, selectedList, setSelectedList, numberPlayer }: Props) => {
     const handleFactionClick = (factionToCheck: IFaction): void => {
         const isSelected = selectedList.includes(factionToCheck);
